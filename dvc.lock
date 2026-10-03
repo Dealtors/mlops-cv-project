@@ -38,7 +38,7 @@ stages:
     params:
       params.yaml:
         train:
-          model_type: custom_cnn
+          model_type: mobilenet_v2
           epochs: 5
           batch_size: 16
           lr: 0.001
@@ -46,8 +46,8 @@ stages:
     outs:
     - path: models/model.pt
       hash: md5
-      md5: 3da84eac9e7055b7cc82b87e0dca08f9
-      size: 8413105
+      md5: e04a9756c3958e66f1c8a5d8b91d721a
+      size: 9129163
   evaluate:
     cmd: python src/evaluate.py
     deps:
@@ -58,8 +58,8 @@ stages:
       nfiles: 200
     - path: models/model.pt
       hash: md5
-      md5: 3da84eac9e7055b7cc82b87e0dca08f9
-      size: 8413105
+      md5: e04a9756c3958e66f1c8a5d8b91d721a
+      size: 9129163
     - path: src/evaluate.py
       hash: md5
       md5: 2df741643652e32b774504210ca4e5df
@@ -67,7 +67,7 @@ stages:
     params:
       params.yaml:
         train:
-          model_type: custom_cnn
+          model_type: mobilenet_v2
           epochs: 5
           batch_size: 16
           lr: 0.001
@@ -75,5 +75,5 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: 7ec5e5851afb0bc5a56c178c34938e0c
-      size: 121
+      md5: 01bdc2b7a0e08f34484b64fd588bd91c
+      size: 90
