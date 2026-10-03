@@ -9,10 +9,20 @@ stages:
     outs:
       - data/processed
 
+  augment:
+    cmd: python src/augment.py
+    deps:
+      - data/processed
+      - src/augment.py
+    params:
+      - augment
+    outs:
+      - data/augmented
+
   train:
     cmd: python src/train.py
     deps:
-      - data/processed
+      - data/augmented
       - src/train.py
     params:
       - train

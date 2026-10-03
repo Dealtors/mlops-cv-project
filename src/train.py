@@ -49,7 +49,7 @@ def train():
         transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
     ])
 
-    train_data = datasets.ImageFolder("data/processed/train", transform=transform)
+    train_data = datasets.ImageFolder("data/augmented/train", transform=transform)
     train_loader = DataLoader(train_data, batch_size=cfg["batch_size"], shuffle=True)
 
     model = get_model(cfg["model_type"])

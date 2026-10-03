@@ -26,14 +26,14 @@ stages:
   train:
     cmd: python src/train.py
     deps:
-    - path: data/processed
+    - path: data/augmented
       hash: md5
-      md5: fd3f6c5aa495d6d8fd20e86582163212.dir
-      size: 922622
-      nfiles: 200
+      md5: ff22a197bd1e0ccb7de20bd087a213b0.dir
+      size: 2283274
+      nfiles: 480
     - path: src/train.py
       hash: md5
-      md5: 61876d4753c85440ae43031a6cf9f51a
+      md5: 71f02e00b00077403846c183e0b81841
       size: 2393
     params:
       params.yaml:
@@ -46,7 +46,7 @@ stages:
     outs:
     - path: models/model.pt
       hash: md5
-      md5: e04a9756c3958e66f1c8a5d8b91d721a
+      md5: 51024a0a7dddeab5bcc571cf2d7a7069
       size: 9129163
   evaluate:
     cmd: python src/evaluate.py
@@ -58,7 +58,7 @@ stages:
       nfiles: 200
     - path: models/model.pt
       hash: md5
-      md5: e04a9756c3958e66f1c8a5d8b91d721a
+      md5: 51024a0a7dddeab5bcc571cf2d7a7069
       size: 9129163
     - path: src/evaluate.py
       hash: md5
@@ -75,5 +75,28 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: 01bdc2b7a0e08f34484b64fd588bd91c
-      size: 90
+      md5: 31abf86fd8e8dd4205a2c9b35ef95289
+      size: 94
+  augment:
+    cmd: python src/augment.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: fd3f6c5aa495d6d8fd20e86582163212.dir
+      size: 922622
+      nfiles: 200
+    - path: src/augment.py
+      hash: md5
+      md5: b522c66be2cbee8229d5db648c2e9170
+      size: 2091
+    params:
+      params.yaml:
+        augment:
+          num_copies: 2
+          rotation_degrees: 15
+    outs:
+    - path: data/augmented
+      hash: md5
+      md5: ff22a197bd1e0ccb7de20bd087a213b0.dir
+      size: 2283274
+      nfiles: 480
