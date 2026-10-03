@@ -1,0 +1,10 @@
+prepare:
+  test_size: 0.2
+  random_state: 42
+
+train:
+  model_type: "custom_cnn"
+  epochs: 5
+  batch_size: 16
+  lr: 0.001
+  img_size: 128
